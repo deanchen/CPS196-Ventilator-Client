@@ -1,11 +1,33 @@
 body {
   background-color: #356AA0;
+  font-size: 100%;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 3px 3px;
+}
+
+body.xphone {
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px;
+}
+body.x-iphone-os.x-phone {
+  font-size: 114%; // This accommodates the iPhone, at 163ppi
+}
+body.x-android-os.x-phone {
+  font-size: 120%; // This accommodates most Android phones, at 180ppi.
+}
+
+#education h1 {
+  font-size: 4em;
+  line-height: 2em;
+}
+
+
+#education .card {
+  background-color: #356AA0;
+  line-height: 2em;
 }
 
 .card {
   color: #FFF;
   text-align: center;
-  font-size: 72px;
   padding: 80px 40px;
 }
    
@@ -24,7 +46,4 @@ body {
   line-height: 18px;
 }
 
-#education .card {
-  background-color: #356AA0;
-  text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
-}
+

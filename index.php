@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="sencha-touch-debug.css" type="text/css">
 	
 		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/ventilator.css" type="text/css">
 	
 		<!-- Sencha Touch JS -->
@@ -17,5 +18,6 @@
 	</head>
 	
 	<body>
+    <? include('education_template.php') ?>
 	</body>
 </html>
