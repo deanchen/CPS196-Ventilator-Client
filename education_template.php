@@ -44,5 +44,48 @@
       <h2>Most ICU patients no longer need a ventilator within 3 or 4 days.</h2>
       <h2>Your loved one has been on a ventilator for much longer than average.</h2>
     </tpl>
+    
+    <tpl if="cardNum == 6">
+      <h1>Why is My Loved One Still on a Mechanical Ventilator?</h1>
+      <h2>Normally, the ICU doctor takes a patient off the ventilator when:</h2>
+      <ul>
+        <li><p>The patient has recovered a good deal</p></li>
+        <li><p>The patient seems strong enough to breathe on their own</p></li>
+      </ul>
+      <h2>Still, some patients survive the first few ICU days but don't recover enough to breathe on their own without a ventilator. This is what is happening with your loved one.</h2>
+      <h2 style="text-decoration: underline">Doctors still try hard every day to help each patient get off the ventilator.</h2>
+    </tpl>
+    
+    <tpl if="cardNum == 7">
+      <h1>What are Different Treatment Goals?</h1>
+      <p>Your loved one has been on a ventilator in an ICU for much longer than most ICU patients.</p>
+      <p>It is important to think about what the best treatment goals for your loved one should be.</p>
+      <p>The doctors need your guidance to understand what types of treatments best fit your loved one's wishes.</p>
+      <p>There are three main goals of treatment at this point for your loved one. These are shown in the figure below:</p>
+      <img src='education/images/goals_of_treatment.jpg' />
+    </tpl>
+    
+    <tpl if="cardNum == 8">
+      <h1>Advantages and Disadvantages of Different Treatment Goals</h1>
+      <img src='education/images/pro_con_treatment.jpg' />
+    </tpl>
+    
+    <tpl if="cardNum == 9">
+      <h1>Why do I have to make a decision for my loved one?</h1>
+      <h2>When people are too sick to make their own medical choices, someone close to them like you must do it—you are one most likely to know what they would want. Your job is not to make the decision that you want, but to make the decision your loved one would want if they could tell us.</h2>
+      <h2>What your loved one would want may not be the same as what you would want for yourself.</h2>
+      <h2>If your loved one has a living will or has told you what he or she wants, you should respect those wishes.</h2>
+      <h2>Making a choice like this for someone else can be very hard. The next section will help you as you go through the steps.</h2>
+    </tpl>
+    
+    <tpl if="cardNum == 10">
+      <h1>Where are 100 patients just like my loved one after 1 year?</h1>
+      <h2>This diagram shows what has happened after 1 year to 100 patients just like your loved one if the current treatment plan is continued. Each circle represents one person.</h2>
+    </tpl>
+    
+    <tpl if="cardNum == 11">
+ 
+     
+    </tpl>
   </div>
 </textarea>
