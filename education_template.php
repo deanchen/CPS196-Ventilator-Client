@@ -84,7 +84,7 @@
     </tpl>
     
     <tpl if="cardNum == 11">
- 
+      <h1><a href="survey.php" style="color: white;">Take the Survey</a></h1>
      
     </tpl>
   </div>

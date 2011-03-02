@@ -9,6 +9,7 @@ Ext.setup({
 
         new Ext.Panel({
             fullscreen: true,
+            
             layout: {
                 type: 'vbox',
                 align: 'stretch'
@@ -25,11 +26,12 @@ Ext.setup({
 function createEducationCarousel() {
   var educationContent = Ext.XTemplate.from('education');
   var items = new Array();
-  for (var i = 1; i <= 8; i++) {
+  for (var i = 1; i <= 11; i++) {
     items.push({html: educationContent.apply({cardNum: i})});
   }
   var educationCarousel = new Ext.Carousel({
       defaults: {
+          scroll: 'vertical',
           cls: 'card'
       },
       items: items,
