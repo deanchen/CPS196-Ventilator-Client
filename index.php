@@ -9,9 +9,6 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/ventilator.css" type="text/css">
 	
-		<!-- Google Maps JS -->
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-	
 		<!-- Sencha Touch JS -->
 		<script type="text/javascript" src="sencha-touch-debug.js"></script>
 	

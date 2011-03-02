@@ -1,3 +1,30 @@
 body {
-	
+  background-color: #356AA0;
+}
+
+.card {
+  color: #FFF;
+  text-align: center;
+  font-size: 72px;
+  padding: 80px 40px;
+}
+   
+.x-phone .card {
+  padding: 15px;
+  font-size: 36px;
+}
+ 
+.card p {
+  font-size: 24px;
+  line-height: 30px;
+}
+        
+.x-phone .card p {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+#education .card {
+  background-color: #356AA0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
 }
