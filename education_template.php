@@ -12,11 +12,16 @@
         <li><p>Once you finish reading the basic awareness material, you will be presented a survey.</p></li>
       </ul>
       <h3>Please swip right to continue, you can also swipe left to return to this page.</h3>
+      <h3>The shaded circles below shows your progress.</h3>
     </tpl>
     
     <tpl if="cardNum == 2">
-      <h1>Carouse2</h1>
-      <p>Navigate the two carousels on this page by swiping left/right or clicking on one side of the circle indicators below.</p>
+      <h1>What You Will Learn About</h1>
+      <h2>Mechanical ventilators</h2>
+      <h2>What happens to people who stay on mechanical ventilators for longer than average</h2>
+      <h2>Choices you need make about goals of care for your loved one</h2>
+      <h2>The advantages and disadvantages of each choice</h2>
+      <h2>How to make the best decision for your loved one - with the support of the ICU team</h2>
     </tpl>
   </div>
 </textarea>

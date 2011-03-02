@@ -9,8 +9,13 @@ body #education {
 }
 
 #education .card h1 {
-  font-size: 2.5em;
+  font-size: 2.4em;
   margin-bottom: 0.4em;
+}
+
+#education .card h2 {
+  font-size: 1.3em;
+  margin-bottom: 0.6em;
 }
 
 #education .card h3 {
