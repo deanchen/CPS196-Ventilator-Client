@@ -1,49 +1,50 @@
 body {
   background-color: #356AA0;
   font-size: 100%;
-  text-shadow: rgba(0, 0, 0, 0.4) 0px 3px 3px;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 0.2em 0.2em;
 }
 
 body.xphone {
   text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px;
 }
 body.x-iphone-os.x-phone {
-  font-size: 114%; // This accommodates the iPhone, at 163ppi
+  font-size: 114%; /* This accommodates the iPhone, at 163ppi */
 }
 body.x-android-os.x-phone {
-  font-size: 120%; // This accommodates most Android phones, at 180ppi.
+  font-size: 120%; /* This accommodates most Android phones, at 180ppi. */
 }
 
-#education h1 {
-  font-size: 4em;
-  line-height: 2em;
-}
-
-
-#education .card {
-  background-color: #356AA0;
-  line-height: 2em;
+h1, h2, h3, h4, h5, h6, p {
+  line-height: 120%;
 }
 
 .card {
-  color: #FFF;
+  padding: 1.5em 1.5em;
   text-align: center;
-  padding: 80px 40px;
-}
-   
-.x-phone .card {
-  padding: 15px;
-  font-size: 36px;
-}
- 
-.card p {
-  font-size: 24px;
-  line-height: 30px;
-}
-        
-.x-phone .card p {
-  font-size: 16px;
-  line-height: 18px;
 }
 
+.x-phone .card {
+  padding: 0.5em;
+}
+
+ul {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+ul .square {
+  list-style-type: square;
+}
+
+ul .circle {
+  list-style-type: square;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.right-align {
+  text-align: right;
+}
 
