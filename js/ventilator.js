@@ -24,22 +24,15 @@ Ext.setup({
 
 function createEducationCarousel() {
   var educationContent = Ext.XTemplate.from('education');
+  var items = new Array();
+  for (var i = 1; i <= 8; i++) {
+    items.push({html: educationContent.apply({cardNum: i})});
+  }
   var educationCarousel = new Ext.Carousel({
       defaults: {
           cls: 'card'
       },
-      items: [{
-          //html: '<h1>Carousel</h1><p>Navigate the two carousels on this page by swiping left/right or clicking on one side of the circle indicators below.</p>'
-          html: educationContent.apply({cardNum: 1}),
-      },
-      {
-          title: 'Tab 2',
-          html: educationContent.apply({cardNum: 2}),
-      },
-      {
-          title: 'Tab 3',
-          html: '3'
-      }]
+      items: items,
   });
         
   return educationCarousel;

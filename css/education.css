@@ -15,7 +15,9 @@ body #education {
 
 #education .card h2 {
   font-size: 1.3em;
-  margin-bottom: 0.6em;
+  line-height: 1.2em;
+  margin-top: 0.5em;
+  margin-bottom: 0.7em;
 }
 
 #education .card h3 {

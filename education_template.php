@@ -23,5 +23,26 @@
       <h2>The advantages and disadvantages of each choice</h2>
       <h2>How to make the best decision for your loved one - with the support of the ICU team</h2>
     </tpl>
+    
+    <tpl if="cardNum == 3">
+      <h1>What is a Mechanical Ventilator?</h1>
+      <h2>A mechanical ventilator is an artificial breathing machine.</h2>
+      <h2>The ventilator pumps oxygen into the lungs through a breathing tube</h2>
+      <h2>The breathing tube is put through the mouth into the windpipe.</h2>
+      <h2>The ventilator supports a patient while treatments are given for their main problem. The ventilator itself does not cure the problem.</h2>
+    </tpl>
+    
+    <tpl if="cardNum == 4">
+      <h1>What is it Like to Receive Mechanical Ventilation?</h1>
+      <h2>It is uncomfortable to be hooked up to a ventilator, so patients get medicines for pain and to help them relax while they are on it.</h2>
+      <h2>Because the tube in a patient's mouth, they can't eat or drink by mouth while they are receiving mechanical ventilation.</h2>
+    </tpl>
+    
+    <tpl if="cardNum == 5">
+      <h1>What Happens to People on Ventilators?</h1>
+      <img src='education/images/ventilator_pie.jpg' />
+      <h2>Most ICU patients no longer need a ventilator within 3 or 4 days.</h2>
+      <h2>Your loved one has been on a ventilator for much longer than average.</h2>
+    </tpl>
   </div>
 </textarea>
