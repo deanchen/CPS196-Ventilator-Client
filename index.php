@@ -1,24 +1,29 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Ventilator App</title>
-		
-		<!-- Sencha Touch CSS -->
-		<link rel="stylesheet" href="sencha-touch-debug.css" type="text/css">
-	
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="css/reset.css" type="text/css">
-		<link rel="stylesheet" href="css/ventilator.css" type="text/css">
-		<link rel="stylesheet" href="css/education.css" type="text/css">
-	
-		<!-- Sencha Touch JS -->
-		<script type="text/javascript" src="sencha-touch-debug.js"></script>
-	
-		<!-- Application JS -->
-		<script type="text/javascript" src="js/ventilator.js"></script>
-	</head>
-	
-	<body>
-    <? include('education_template.php') ?>
-	</body>
-</html>
+<?php
+session_start();
+
+if (isset($_POST['submit'])) {
+	$patient_id = $_POST['patient_id'];
+	print $patient_id;
+	$check_patient_id = file_get_contents("http://vs.ocirs.com/rest/session/validate/$patient_id");
+	print_r($check_patient_id);
+	//$_SESSION['patient_id'] = $patient_id;
+}
+
+if (!isset($_SESSION['patient_id'])):
+?>
+	<form method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+		<label for='patient_id'>Patient Id</label>
+		<input type="text" name="patient_id" />
+		<input type="submit" name='submit' />
+	</form>
+<?php
+else:
+?>
+
+<script type="text/javascript">
+	window.location = "education.php";
+</script>
+
+<?php endif; ?>
+
+
