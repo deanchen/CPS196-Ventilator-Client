@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION['session_id'])):
+?>
+
+<script type="text/javascript">
+	window.location = "education.php";
+</script>
+
+<?php
+endif;
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -19,6 +32,7 @@
 	</head>
 	
 	<body>
-    <? include('survey_template.php') ?>
+		<div id="session_id" style="display: none"><?php echo $_SESSION['session_id']; ?></div>
+    	<?php include('survey_template.php') ?>
 	</body>
 </html>

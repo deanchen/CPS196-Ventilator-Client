@@ -2,18 +2,22 @@
 session_start();
 
 if (isset($_POST['submit'])) {
-	$patient_id = $_POST['patient_id'];
-	print $patient_id;
-	$check_patient_id = file_get_contents("http://vs.ocirs.com/rest/session/validate/$patient_id");
-	print_r($check_patient_id);
-	//$_SESSION['patient_id'] = $patient_id;
+	$session_id = $_POST['session_id'];
+	$check_session_id = file_get_contents("http://vs.ocirs.com/rest/session/validate/$session_id");
+	
+	if ($check_session_id != 'true') {
+		echo "Invalid patient id $session_id.<br />";
+	} else {
+		//$check_completion = file_get_content("http://vs.ocirs.com/rest/survey/completed/$session_id");
+		$_SESSION['session_id'] = $session_id;
+	}
 }
 
-if (!isset($_SESSION['patient_id'])):
+if (!isset($_SESSION['session_id'])):
 ?>
-	<form method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		<label for='patient_id'>Patient Id</label>
-		<input type="text" name="patient_id" />
+	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+		<label for="session_id">Patient Id</label><br />
+		<input type="text" name="session_id" />
 		<input type="submit" name='submit' />
 	</form>
 <?php
