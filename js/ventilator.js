@@ -31,7 +31,6 @@ function createEducationCarousel() {
   }
   var educationCarousel = new Ext.Carousel({
       defaults: {
-          scroll: 'vertical',
           cls: 'card'
       },
       items: items,
