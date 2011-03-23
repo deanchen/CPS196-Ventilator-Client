@@ -1,13 +1,12 @@
 /**
  * @author Dean Chen
  */
- Ext.setup({
+Ext.setup({
     tabletStartupScreen: 'tablet_startup.png',
     phoneStartupScreen: 'phone_startup.png',
     icon: 'icon.png',
     glossOnIcon: false,
     onReady: function() {
-    	console.log("test");
         var form = createForm();
         new Ext.Panel({
             fullscreen: true,
@@ -26,25 +25,47 @@
 });
 
 function createForm() {
-	console.log("test");
-	Ext.regModel('Groups', {
-    fields: ['id', 'title']
+	var session_id = Ext.getDom('session_id').innerHTML;
+	var survey;
+	$.ajax({
+		url: "http://vs.ocirs.com/rest/survey/groups?callback=?",
+		dataType: "jsonp",
+		success: processGroups
 	});
 	
-	var store = new Ext.data.Store({
-	    model: 'Groups',
-	    proxy: {
-	        type: 'scripttag',
-	        url : 'http://vs.ocirs.com/survey/group',
-	        callbackParam: 'callback',
-	        reader: {
-	            type: 'json'
-	        }
-	    }
-	});
-	store.load();
-	console.log(store);
+	function processGroups(data) {
+		survey = data;
+		for (var i = 0; i < data.length; i++) {
+			storeQuestions(data[i], i);
+		}
+	};
+	
+	function storeQuestions(group, index) {
+		$.ajax({
+			url: "http://vs.ocirs.com/rest/survey/questions/" + group.id +
+			"/" + session_id,
+			dataType: "jsonp",
+			success: function(data) {
+				survey[index].questions = data;
+				console.log(data);
+				var test = true;
+				for (var i = 0; i < survey.length; i++) {
+					if (survey[i].questions === undefined) {
+						test = false;
+					}
+				}
+				if (test) {
+					constructForm();
+				}
+			}
+		});
+	};
 
+	function constructForm() {
+		console.log(survey);
+		console.log(survey[1].questions);
+	}
+	
 	var question1 = createQuestion();
 	var form =  new Ext.Carousel({
       defaults: {
