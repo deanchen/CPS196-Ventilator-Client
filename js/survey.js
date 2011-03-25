@@ -107,11 +107,16 @@ function createQuestion(question) {
 	for (var index in question.options) {
 		if(question.options.hasOwnProperty(index)) {
 			var option = question.options[index];
-			items.push({
+			var field = {
 				name: option.question_id,
 				value: option.points,
 				label: option.option_value
-			});
+			};
+			
+			if (option.is_multi_answered === "1") {
+				field.xtype = 'checkboxfield';
+			}
+			items.push(field);
 		}
 	};
 	return {
