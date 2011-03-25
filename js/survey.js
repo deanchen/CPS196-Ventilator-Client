@@ -21,12 +21,16 @@ var form;
 
 
 function createForm() {
-	
-	$.ajax({
-		url: "http://vs.ocirs.com/rest/survey/groups?callback=?",
-		dataType: "jsonp",
-		success: processGroups
-	});
+
+    Ext.util.JSONP.request({
+        url: 'http://vs.ocirs.com/rest/survey/groups',
+        callbackKey: 'callback',
+
+        callback: function(result) {
+        	alert('groups callback');
+			processGroups(result);
+        }
+    });
 }	
 function processGroups(data) {
 	survey = data;
