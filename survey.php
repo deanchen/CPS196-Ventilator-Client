@@ -4,7 +4,7 @@ if (!isset($_SESSION['session_id'])):
 ?>
 
 <script type="text/javascript">
-	window.location = "education.php";
+	window.location = "index.php";
 </script>
 
 <?php

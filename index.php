@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (isset($_POST['submit'])) {
-	$session_id = $_POST['session_id'];
+if (isset($_GET['session_id'])) {
+	$session_id = $_GET['session_id'];
 	$check_session_id = file_get_contents("http://vs.ocirs.com/rest/session/validate/$session_id");
 	
 	if ($check_session_id != 'true') {
@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
 
 if (!isset($_SESSION['session_id'])):
 ?>
-	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+	<form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		<label for="session_id">Patient Id</label><br />
 		<input type="text" name="session_id" />
 		<input type="submit" name='submit' />
