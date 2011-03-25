@@ -23,7 +23,6 @@ function createForm() {
 		callbackKey: 'callback',
 
 		callback: function(result) {
-			alert('groups callback');
 			processGroups(result);
 		}
 	});
@@ -91,7 +90,6 @@ function createQuestions(group, index) {
 	var questions = [];
 	var groupQuestions = group.questions;
 	for (var question in groupQuestions) {
-
 		questions.push(createQuestion(groupQuestions[question]));
 	}
 
@@ -109,7 +107,11 @@ function createQuestion(question) {
 	for (var index in question.options) {
 		if(question.options.hasOwnProperty(index)) {
 			var option = question.options[index];
-			items.push({name: 'answer', value: option.points, label: option.option_value});
+			items.push({
+				name: option.question_id,
+				value: option.points,
+				label: option.option_value
+			});
 		}
 	};
 	return {
@@ -117,7 +119,7 @@ function createQuestion(question) {
 		title: question.question,
 		defaults: {
 			xtype: 'radiofield',
-			labelWidth: '35%'
+			labelWidth: '60%'
 		},
 		items: items
 	};
