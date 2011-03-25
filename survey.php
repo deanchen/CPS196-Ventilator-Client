@@ -15,7 +15,7 @@ endif;
 <html>
 	<head>
 		<title>Survey</title>
-		
+		<meta name="format-detection" content="telephone=		
 		<!-- Sencha Touch CSS -->
 		<link rel="stylesheet" href="sencha/sencha-touch-debug.css" type="text/css">
 	
