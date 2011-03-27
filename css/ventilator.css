@@ -1,7 +1,7 @@
 body {
   background-color: #356AA0;
   font-size: 100%;
-  text-shadow: rgba(0, 0, 0, 0.4) 0px 0.2em 0.2em;
+  text-shadow: rgba(0, 0, 0, 0.6) 0.1em 0.1em 0.5em;
 }
 
 body.xphone {
@@ -48,3 +48,6 @@ ul .circle {
   text-align: right;
 }
 
+.x-msgbox {
+	font-size: 1.4em;
+}
