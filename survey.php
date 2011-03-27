@@ -29,7 +29,7 @@ endif;
 	
 		<!-- Application JS -->
 		<script type="text/javascript" src="js/survey.js"></script>
-		<script type="text/javascript" src="js/jquery.js"></script>
+		<!--<script type="text/javascript" src="js/jquery.js"></script>-->
 	</head>
 	
 	<body>

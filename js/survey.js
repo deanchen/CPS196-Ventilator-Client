@@ -1,8 +1,11 @@
 /**
  * @author Dean Chen
  */
+ 
 var session_id;
-var survey;
+var survey; 
+var test;
+
 Ext.setup({
 	tabletStartupScreen: 'tablet_startup.png',
 	phoneStartupScreen: 'phone_startup.png',
@@ -15,13 +18,10 @@ Ext.setup({
 	}
 });
 
-var form;
-
 function createForm() {
 	Ext.util.JSONP.request({
 		url: 'http://vs.ocirs.com/rest/survey/groups',
 		callbackKey: 'callback',
-
 		callback: function(result) {
 			processGroups(result);
 		}
@@ -36,11 +36,11 @@ function processGroups(data) {
 };
 
 function storeQuestions(group, index) {
-	$.ajax({
-		url: "http://vs.ocirs.com/rest/survey/questions/" + group.id +
+	Ext.util.JSONP.request({
+		url: 'http://vs.ocirs.com/rest/survey/questions/' + group.id +
 		"/" + session_id,
-		dataType: "jsonp",
-		success: function(data) {
+		callbackKey: 'callback',
+		callback: function(data) {
 			survey[index].questions = data;
 			console.log(data);
 			var test = true;
