@@ -3,8 +3,6 @@
  */
  
 var session_id;
-var survey; 
-var test;
 
 Ext.setup({
 	tabletStartupScreen: 'tablet_startup.png',
@@ -13,67 +11,53 @@ Ext.setup({
 	glossOnIcon: false,
 	onReady: function() {
 		session_id = Ext.getDom('session_id').innerHTML;
-		console.log(session_id);
-		var form = createForm();
+		initForm();
 	}
 });
 
-function createForm() {
+function initForm() {
 	Ext.util.JSONP.request({
 		url: 'http://vs.ocirs.com/rest/survey/groups',
 		callbackKey: 'callback',
 		callback: function(result) {
-			processGroups(result);
+			result.forEach(getQuestions);
 		}
 	});
 }
 
-function processGroups(data) {
-	survey = data;
-	for (var i = 0; i < data.length; i++) {
-		storeQuestions(data[i], i);
-	}
-};
 
-function storeQuestions(group, index) {
+function getQuestions(group, index, survey) {
 	Ext.util.JSONP.request({
 		url: 'http://vs.ocirs.com/rest/survey/questions/' + group.id +
 		"/" + session_id,
 		callbackKey: 'callback',
-		callback: function(data) {
-			survey[index].questions = data;
-			console.log(data);
-			var test = true;
-			for (var i = 0; i < survey.length; i++) {
-				if (survey[i].questions === undefined) {
-					test = false;
-				}
-			}
-			if (test) {
-				constructForm();
-			}
+		callback: function(result) {
+			survey[index].questions = result;
+			// check that all of the questions has been retrieved before constructiong the entire form
+			var allSet = survey.every(function(element, index, array) {
+				return element.questions !== undefined;
+			});
+			
+			// once entire form has been retrieved construct the survey
+			if (allSet) constructSurvey(survey);
 		}
 	});
 };
 
-function constructForm() {
-	var cards = [];
-	for (var i = 0; i < survey.length; i++) {
-		cards.push(createQuestions(survey[i], i));
-	}
-
+function constructSurvey(survey) {
+	var form;
+	var cards = survey.map(createQuestionGroup);
 	cards.push({html: "Survey complete"});
 
-	console.log(cards);
 	form =  new Ext.Carousel({
 		defaults: {
 			cls: 'card'
 		},
 		items: cards
 	});
+	
 	new Ext.Panel({
 		fullscreen: true,
-
 		layout: {
 			type: 'vbox',
 			align: 'stretch'
@@ -86,39 +70,21 @@ function constructForm() {
 	});
 }
 
-function createQuestions(group, index) {
-	var questions = [];
-	var groupQuestions = group.questions;
-	for (var question in groupQuestions) {
-		questions.push(createQuestion(groupQuestions[question]));
-	}
+function createQuestionGroup(group) {
+	var questions = Object.keys(group.questions).map(createQuestion, group.questions);
 
-	var form = {
+	return {
 		title: group.title,
 		xtype: 'form',
 		id: group.id,
 		items: questions
 	};
-	return form;
 };
 
-function createQuestion(question) {
-	var items = [];
-	for (var index in question.options) {
-		if(question.options.hasOwnProperty(index)) {
-			var option = question.options[index];
-			var field = {
-				name: option.question_id,
-				value: option.points,
-				label: option.option_value
-			};
-			
-			if (option.is_multi_answered === "1") {
-				field.xtype = 'checkboxfield';
-			}
-			items.push(field);
-		}
-	};
+function createQuestion(key) {
+	var question = this[key];
+	var items = Object.keys(question.options).map(createField, question.options);
+	
 	return {
 		xtype: 'fieldset',
 		title: question.question,
@@ -129,3 +95,17 @@ function createQuestion(question) {
 		items: items
 	};
 }
+
+function createField(key) {
+	var option = this[key];
+	var field = {
+		name: option.question_id,
+		value: option.points,
+		label: option.option_value
+	};
+	
+	if (option.is_multi_answered === "1") {
+		field.xtype = 'checkboxfield';
+	}
+	return field;
+};
