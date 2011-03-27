@@ -5,8 +5,13 @@ Ext.setup({
     glossOnIcon: false,
     onReady: function() {
         // Create a Carousel of Items
-        var educationCarousel = createEducationCarousel();
+		Ext.Msg.alert('', 
+			'This will take about 30 minutes.<br /><br />Please read each page.<br /><br />Navigate by swipping left or right.<br /><br />Progress indicator is on the bottom',
+			Ext.emptyFn
+		);
 
+        var educationCarousel = createEducationCarousel();
+	
         new Ext.Panel({
             fullscreen: true,
             
