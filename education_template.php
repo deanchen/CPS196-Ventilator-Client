@@ -6,6 +6,7 @@
       <p>Your loved one can't tell the doctor what goals of treatment fit best with their wishes.</p>
       <p>Because your loved one can't tell us now what treatment goals fit their wishes, they need your help.</p>
       <p>This decision aid tool will help you to decide about goals of treatment for a loved one in an intensive care unit (ICU).</p>
+      <!--
       <ul>
         <li><p>This will take about 30 minutes.</p></li>
         <li><p>Please read each page.</p></li>
@@ -13,6 +14,7 @@
       </ul>
       <h3>Please swip right to continue, you can also swipe left to return to this page.</h3>
       <h3>The shaded circles below shows your progress.</h3>
+      -->
     </tpl>
     
     <tpl if="cardNum == 2">
@@ -72,7 +74,7 @@
     
     <tpl if="cardNum == 9">
       <h1>Why do I have to make a decision for my loved one?</h1>
-      <h2>When people are too sick to make their own medical choices, someone close to them like you must do it—you are one most likely to know what they would want. Your job is not to make the decision that you want, but to make the decision your loved one would want if they could tell us.</h2>
+      <h2>When people are too sick to make their own medical choices, someone close to them like you must do it - you are one most likely to know what they would want. Your job is not to make the decision that you want, but to make the decision your loved one would want if they could tell us.</h2>
       <h2>What your loved one would want may not be the same as what you would want for yourself.</h2>
       <h2>If your loved one has a living will or has told you what he or she wants, you should respect those wishes.</h2>
       <h2>Making a choice like this for someone else can be very hard. The next section will help you as you go through the steps.</h2>
