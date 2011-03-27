@@ -83,17 +83,13 @@ function constructSurvey(survey) {
 
 function createQuestionGroup(group) {
 	var questions = Object.keys(group.questions).map(createQuestion, group.questions);
-	console.log(group.id);
+	
 	return {
 		title: group.title,
 		xtype: 'form',
 		id: "form" + group.id,
 		items: questions,
-		url: 'http://vs.ocirs.com/rest/survey/questions/QUESTION_GROUP_ID_GOES_HERE/SESSION_ID_GOES_HERE',
-		baseParams: {
-			session_id: session_id,
-			question_group_id: group.id
-		}
+		url: '/api/rest/survey/questions/' + group.id + '/' + session_id
 	};
 };
 
@@ -123,6 +119,7 @@ function createField(key) {
 	
 	if (option.is_multi_answered === "1") {
 		field.xtype = 'checkboxfield';
+		field.name = option.question_id + "_" + option.option_id;
 	}
 	return field;
 };
