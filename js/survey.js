@@ -10,6 +10,7 @@ Ext.setup({
 	icon: 'icon.png',
 	glossOnIcon: false,
 	onReady: function() {
+		Ext.Msg.alert('Title', 'The quick brown fox jumped over the lazy dog.', Ext.emptyFn);
 		session_id = Ext.getDom('session_id').innerHTML;
 		Ext.form.FormPanel.prototype.onFieldAction = function() {console.log('test')};
 		initForm();
@@ -46,7 +47,7 @@ function getQuestions(group, index, survey) {
 function constructSurvey(survey) {
 	var form;
 	var cards = survey.map(createQuestionGroup);
-	cards.push({html: "Survey complete"});
+	cards.push({ html:''});
 
 	form =  new Ext.Carousel({
 		id: 'carousel',
@@ -67,6 +68,17 @@ function constructSurvey(survey) {
 		}
 	});
 	
+	form.on({
+		cardswitch: {
+			scope: this,
+			fn: function(container, newCard, oldCard, index) {
+				console.log(index);
+				if (index === cards.length-1) {
+					Ext.Msg.alert('Title', 'The quick brown fox jumped over the lazy dog.', Ext.emptyFn);
+				}
+			}
+		}
+	});
 	new Ext.Panel({
 		fullscreen: true,
 		layout: {
@@ -79,6 +91,8 @@ function constructSurvey(survey) {
 		},
 		items: [form],
 	});
+	
+
 }
 
 function createQuestionGroup(group) {
