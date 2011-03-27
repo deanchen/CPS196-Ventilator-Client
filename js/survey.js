@@ -11,28 +11,27 @@ Ext.setup({
 	glossOnIcon: false,
 	onReady: function() {
 		session_id = Ext.getDom('session_id').innerHTML;
+		Ext.form.FormPanel.prototype.onFieldAction = function() {console.log('test')};
 		initForm();
 	}
 });
 
 function initForm() {
-	Ext.util.JSONP.request({
-		url: 'http://vs.ocirs.com/rest/survey/groups',
-		callbackKey: 'callback',
-		callback: function(result) {
-			result.forEach(getQuestions);
-		}
+	Ext.Ajax.request({
+		url: '/api/rest/survey/groups',
+		success: function(result) {
+			Ext.util.JSON.decode(result.responseText).forEach(getQuestions);
+		} 
 	});
 }
 
 
 function getQuestions(group, index, survey) {
-	Ext.util.JSONP.request({
-		url: 'http://vs.ocirs.com/rest/survey/questions/' + group.id +
+	Ext.Ajax.request({
+		url: '/api/rest/survey/questions/' + group.id +
 		"/" + session_id,
-		callbackKey: 'callback',
-		callback: function(result) {
-			survey[index].questions = result;
+		success: function(result) {
+			survey[index].questions = Ext.util.JSON.decode(result.responseText);
 			// check that all of the questions has been retrieved before constructiong the entire form
 			var allSet = survey.every(function(element, index, array) {
 				return element.questions !== undefined;
@@ -50,10 +49,22 @@ function constructSurvey(survey) {
 	cards.push({html: "Survey complete"});
 
 	form =  new Ext.Carousel({
+		id: 'carousel',
 		defaults: {
 			cls: 'card'
 		},
 		items: cards
+	});
+	
+	// submit previous results on card switch
+	form.on({
+		beforecardswitch: {
+			scope: this,
+			fn: function(container, newCard, oldCard, index) {
+				console.log(oldCard);
+				oldCard.submit();
+			}
+		}
 	});
 	
 	new Ext.Panel({
@@ -64,7 +75,7 @@ function constructSurvey(survey) {
 		},
 		defaults: {
 			flex: 1,
-			id: 'education'
+			id: 'survey'
 		},
 		items: [form],
 	});
@@ -72,12 +83,17 @@ function constructSurvey(survey) {
 
 function createQuestionGroup(group) {
 	var questions = Object.keys(group.questions).map(createQuestion, group.questions);
-
+	console.log(group.id);
 	return {
 		title: group.title,
 		xtype: 'form',
-		id: group.id,
-		items: questions
+		id: "form" + group.id,
+		items: questions,
+		url: 'http://vs.ocirs.com/rest/survey/questions/QUESTION_GROUP_ID_GOES_HERE/SESSION_ID_GOES_HERE',
+		baseParams: {
+			session_id: session_id,
+			question_group_id: group.id
+		}
 	};
 };
 
@@ -98,9 +114,10 @@ function createQuestion(key) {
 
 function createField(key) {
 	var option = this[key];
+	console.log(option);
 	var field = {
 		name: option.question_id,
-		value: option.points,
+		value: option.option_id,
 		label: option.option_value
 	};
 	

@@ -3,8 +3,8 @@ session_start();
 
 if (isset($_GET['session_id'])) {
 	$session_id = $_GET['session_id'];
-	$check_session_id = file_get_contents("http://vs.ocirs.com/rest/session/validate/$session_id");
-	
+	$check_session_id = file_get_contents('http://' . $_SERVER['HTTP_HOST'] . "/api/rest/session/validate/$session_id");
+
 	if ($check_session_id != 'true') {
 		echo "Invalid patient id $session_id.<br />";
 	} else {
