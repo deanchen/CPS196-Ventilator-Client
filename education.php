@@ -15,7 +15,7 @@
 		<script type="text/javascript" src="sencha/sencha-touch.js"></script>
 	
 		<!-- Application JS -->
-		<script type="text/javascript" src="js/ventilator.js"></script>
+		<script type="text/javascript" src="js/education.js"></script>
 	</head>
 	
 	<body>
