@@ -81,8 +81,56 @@
     </tpl>
     
     <tpl if="cardNum == 10">
-      <h1>Where are 100 patients just like my loved one after 1 year?</h1>
-      <h2>This diagram shows what has happened after 1 year to 100 patients just like your loved one if the current treatment plan is continued. Each circle represents one person.</h2>
+
+<h1>Where are 100 patients just like my loved one after 1 year?</h1>
+      <h2 style="margin-bottom: 0px">This diagram shows what has happened after 1 year to 100 patients just like your loved one if the current treatment plan is continued. Each circle represents one person.</h2>
+
+     <div class="pictogram">
+      <?php 
+      	$survival = json_decode(file_get_contents('http://ventilator-dev.ocirs.com/api/rest/report/4578340113')) ;
+      ?>
+      	<div id="dead" class="block left">
+      		<h3 class="label"><?php echo $survival->dead; ?> dead</h2>
+      		<div style="clear: both"></div>
+      		<?php for ($i = 0; $i<$survival->dead; $i++): ?>
+      			<div class='circle'></div>
+      		<?php endfor; ?>	
+      		<div style="clear: both"></div>
+
+      		
+      	</div>
+
+      	<div id="nursing_home" class="block">
+      		<h3 class="label"><?php echo $survival->nursing_home; ?> in a nursing home</h2>
+			<div style="clear: both"></div>
+      		<?php for ($i = 0; $i<$survival->nursing_home; $i++): ?>
+      			<div class='circle'></div>
+      		<?php endfor; ?>
+      		<div style="clear: both"></div>	
+  
+      		
+      	</div>
+      	<div class='separator'></div>
+      
+		<div id="dependent_on_others" class="block left">
+			<h3 class="label"><?php echo $survival->dependent_on_others; ?> home but dependent on others</h2>
+			<div style="clear: both"></div>
+			<?php for ($i = 0; $i<$survival->dependent_on_others; $i++): ?>
+      			<div class='circle'></div>
+      		<?php endfor; ?>
+      		<div style="clear: both"></div>
+      		
+		</div>
+		<div id="independent" class="block">
+			<h3 class="label"><?php echo $survival->independent; ?> home and independent</h2>
+				<div style="clear: both"></div>
+			<?php for ($i = 0; $i<$survival->independent; $i++): ?>
+      			<div class='circle'></div>
+      		<?php endfor; ?>	
+      		<div style="clear: both"></div>
+      		
+		</div>
+		</div>
     </tpl>
     <!--
     <tpl if="cardNum == 11">

@@ -34,3 +34,59 @@ body #education {
   border: 1px solid #DDD;
 }
 
+.circle {
+ height: 24px;
+ -moz-border-radius:12px;
+ -webkit-border-radius: 12px;
+ width: 24px;
+ float: left;
+ -moz-box-shadow: -1px 1px 3px #000;
+ -webkit-box-shadow: -1px 1px 3px #000;
+ -o-box-shadow: -1px 1px 3px #000;
+ box-shadow: -1px 1px 3px #000;
+ margin-right: 4px;
+ margin-bottom: 4px;
+}
+
+#dead .circle {
+	background-color: black;
+}
+
+#nursing_home .circle {
+	background-color: red;
+}
+
+#dependent_on_others .circle {
+	background-color: orange;
+}
+
+#independent .circle {
+	background-color: green;
+}
+
+.pictogram {
+	width: 610px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+#education .card h3.label {
+	text-align: center;
+	text-decoration: none;
+	clear: both;
+	margin-top: 0.3em;
+}
+
+
+.pictogram > .block {
+	width: 300px;
+	float: left;
+}
+
+.pictogram > .left {
+	margin-right: 10px;
+}
+
+.separator {
+	clear: both;
+}
