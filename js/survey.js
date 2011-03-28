@@ -60,25 +60,51 @@ function constructSurvey(survey) {
 		beforecardswitch: {
 			scope: this,
 			fn: function(container, newCard, oldCard, index) {
-				if (index !== cards.length-1) {
-					oldCard.submit();
+				if (index > form.getActiveIndex()) {
+					var allSet = Object.keys(oldCard.getValues()).every(
+						function(element, index, array) {
+							if (this[element]!==null) {
+								return (this[element].length) > 0;
+							} else {
+								return false;
+							}
+						}
+					, oldCard.getValues());
+					console.log(oldCard.getValues());
+					if (allSet) {
+						var params = {};
+						Object.keys(oldCard.getValues()).forEach(
+						function(element, index, array) {
+							if (this[element]!==undefined && this[element]!==null && Ext.isArray(this[element]) && this[element].length > 1) {
+								console.log(this[element].length);
+								params[element] = this[element].join(',');
+							}
+						}
+						, oldCard.getValues());
+						oldCard.submit({
+							params: params
+						});
+						
+						if (index === cards.length-1) {
+							// replace last slide with a message
+							Ext.Msg.alert('Thank You', 
+								'Your responses has been recorded and sent to your loved one\'s doctor. Press ok to see your survey results.', 
+								function(){
+									Ext.Ajax.request({
+										url: '/api/rest/survey/completed/' + session_id,
+										method: 'POST'
+									})
+								}
+							);
+						}
+					} else {
+						Ext.Msg.alert('Incomplete Response', 'Please answer all questions before continuing to next page.', function() {form.prev()});
+					}
 				}
 			}
 		}
 	});
 			
-	form.on({
-		cardswitch: {
-			scope: this,
-			fn: function(container, newCard, oldCard, index) {
-				console.log(index);
-				if (index === cards.length-1) {
-					// replace last slide with a message
-					Ext.Msg.alert('Thank You', 'Your responses has been recorded and sent to your loved one\'s doctor.', function(){window.location='return.php'});
-				}
-			}
-		}
-	});
 	new Ext.Panel({
 		fullscreen: true,
 		layout: {
@@ -133,7 +159,7 @@ function createField(key) {
 	
 	if (option.is_multi_answered === "1") {
 		field.xtype = 'checkboxfield';
-		field.name = option.question_id + "_" + option.option_id;
+		field.name = option.question_id;
 	}
 	return field;
 };
