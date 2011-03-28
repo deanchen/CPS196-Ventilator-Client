@@ -1,7 +1,6 @@
 /**
  * @author Dean Chen
  */
- 
 var session_id;
 
 Ext.setup({
@@ -10,7 +9,7 @@ Ext.setup({
 	icon: 'icon.png',
 	glossOnIcon: false,
 	onReady: function() {
-		Ext.Msg.alert('Title', 'The quick brown fox jumped over the lazy dog.', Ext.emptyFn);
+		Ext.Msg.alert('', '', Ext.emptyFn);
 		session_id = Ext.getDom('session_id').innerHTML;
 		Ext.form.FormPanel.prototype.onFieldAction = function() {console.log('test')};
 		initForm();
@@ -47,7 +46,7 @@ function getQuestions(group, index, survey) {
 function constructSurvey(survey) {
 	var form;
 	var cards = survey.map(createQuestionGroup);
-	cards.push({ html:''});
+	cards.push({ html:'<h1 style="font-size: 5em">Please return this device to the nurse.</h1>'});
 
 	form =  new Ext.Carousel({
 		id: 'carousel',
@@ -62,8 +61,9 @@ function constructSurvey(survey) {
 		beforecardswitch: {
 			scope: this,
 			fn: function(container, newCard, oldCard, index) {
-				console.log(oldCard);
-				oldCard.submit();
+				if (index !== cards.length-1) {
+					oldCard.submit();
+				}
 			}
 		}
 	});
@@ -74,7 +74,8 @@ function constructSurvey(survey) {
 			fn: function(container, newCard, oldCard, index) {
 				console.log(index);
 				if (index === cards.length-1) {
-					Ext.Msg.alert('Title', 'The quick brown fox jumped over the lazy dog.', Ext.emptyFn);
+					// replace last slide with a message
+					Ext.Msg.alert('Thank You', 'Your responses has been recorded and sent to your loved one\'s doctor.', Ext.emptyFn);
 				}
 			}
 		}
