@@ -93,7 +93,14 @@ function constructSurvey(survey) {
 									Ext.Ajax.request({
 										url: '/api/rest/survey/completed/' + session_id,
 										method: 'POST'
-									})
+									});
+									
+									Ext.Ajax.request({
+										url: '/api/rest/survey/points/' + session_id,
+										success: function(result) {
+											window.location = '/client/result.php?points=' + result.responseText;
+										}
+									});
 								}
 							);
 						}
