@@ -5,3 +5,14 @@
 .card {
 	padding-top: 0.5em;
 }
+
+.x-field > div {
+	padding: 0.2em;
+}
+.x-form-label {
+	font-size: 1.4em;
+}
+
+.x-form-fieldset-title {
+	font-size: 1.3em;
+}

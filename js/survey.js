@@ -9,9 +9,8 @@ Ext.setup({
 	icon: 'icon.png',
 	glossOnIcon: false,
 	onReady: function() {
-		Ext.Msg.alert('', '', Ext.emptyFn);
+		Ext.Msg.alert('Please Complete This Survey', 'It will help your doctor better understand your family\'s situation.', Ext.emptyFn);
 		session_id = Ext.getDom('session_id').innerHTML;
-		Ext.form.FormPanel.prototype.onFieldAction = function() {console.log('test')};
 		initForm();
 	}
 });
@@ -46,7 +45,7 @@ function getQuestions(group, index, survey) {
 function constructSurvey(survey) {
 	var form;
 	var cards = survey.map(createQuestionGroup);
-	cards.push({ html:'<h1 style="font-size: 5em">Please return this device to the nurse.</h1>'});
+	cards.push({ html:''});
 
 	form =  new Ext.Carousel({
 		id: 'carousel',
@@ -67,7 +66,7 @@ function constructSurvey(survey) {
 			}
 		}
 	});
-	
+			
 	form.on({
 		cardswitch: {
 			scope: this,
@@ -75,7 +74,7 @@ function constructSurvey(survey) {
 				console.log(index);
 				if (index === cards.length-1) {
 					// replace last slide with a message
-					Ext.Msg.alert('Thank You', 'Your responses has been recorded and sent to your loved one\'s doctor.', Ext.emptyFn);
+					Ext.Msg.alert('Thank You', 'Your responses has been recorded and sent to your loved one\'s doctor.', function(){window.location='return.php'});
 				}
 			}
 		}

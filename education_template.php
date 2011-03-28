@@ -84,10 +84,11 @@
       <h1>Where are 100 patients just like my loved one after 1 year?</h1>
       <h2>This diagram shows what has happened after 1 year to 100 patients just like your loved one if the current treatment plan is continued. Each circle represents one person.</h2>
     </tpl>
-    
+    <!--
     <tpl if="cardNum == 11">
       <h1><a href="survey.php" style="color: white;">Take the Survey</a></h1>
      
     </tpl>
+    -->
   </div>
 </textarea>
