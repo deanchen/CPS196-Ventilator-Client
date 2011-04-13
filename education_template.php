@@ -87,7 +87,9 @@
 
      <div class="pictogram">
       <?php 
-      	$survival = json_decode(file_get_contents('http://ventilator-dev.ocirs.com/api/rest/report/4578340113')) ;
+	// make web service call to get the statistics and display it using css 3
+	$api_url ='http://' . $_SERVER['SERVER_NAME'] . '/api/rest/report/' . $_SESSION['session_id'];
+      	$survival = json_decode(file_get_contents($api_url));
       ?>
       	<div id="dead" class="block left">
       		<h3 class="label"><?php echo $survival->dead; ?> dead</h2>

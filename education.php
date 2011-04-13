@@ -1,3 +1,18 @@
+<!-- HTML container for educational portion of the app -->
+<?php
+// redirect user to enter the patient session id if it is not set
+session_start();
+if (!isset($_SESSION['session_id'])):
+?>
+
+<script type="text/javascript">
+        window.location = "index.php";
+</script>
+
+<?php
+endif;
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -19,6 +34,7 @@
 	</head>
 	
 	<body>
-    <? include('education_template.php') ?>
+	<!-- Definition of contents of educational pages -->
+	<? include('education_template.php') ?>
 	</body>
 </html>
