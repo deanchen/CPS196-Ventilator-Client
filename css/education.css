@@ -71,7 +71,7 @@ body #education {
 	display: block;
 }
 #education .card h3.label {
-	text-align: center;
+	text-align: left;
 	text-decoration: none;
 	clear: both;
 	margin-top: 0.3em;
