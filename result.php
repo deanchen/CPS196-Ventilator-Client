@@ -184,7 +184,7 @@ $id("slider_arrow").style.left = incr+"px";
 document.getElementById("temp_div").style.height = (document.height-350)+"px";
 
 </script>
-<h2 style='text-align: center'>Please return this device to the nurse.</h2>
+<h2 style='text-align: center'>Thank you for completing this survey.<br /><br />Please return this device to the nurse.</h2>
 
 </div>
 

@@ -25,7 +25,7 @@ endif;
 		<link rel="stylesheet" href="css/survey.css" type="text/css">
 	
 		<!-- Sencha Touch JS -->
-		<script type="text/javascript" src="sencha/sencha-touch-demo.js"></script>
+		<script type="text/javascript" src="sencha/sencha-touch.js"></script>
 	
 		<!-- Application JS -->
 		<script type="text/javascript" src="js/survey.js"></script>
