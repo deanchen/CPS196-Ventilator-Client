@@ -1,19 +1,20 @@
 body #education {
-  color: white;
-  font-size: 1.4em;
+  color: #333;
+  font-size: 1.3em;
 }
 
 #education .card {
-  background-color: #356AA0;
+  background-color: #EEE;
   
 }
 
 #education .card h1 {
-  font-size: 2.4em;
+  font-size: 2.2em;
   margin-bottom: 0.4em;
 }
 
 #education .card h2 {
+  font-weight: normal;
   font-size: 1.3em;
   line-height: 1.2em;
   margin-top: 0.5em;
@@ -31,9 +32,132 @@ body #education {
 }
 
 #education .card ul {
-  border: 1px solid #DDD;
+  padding-left: 10px;
+  padding-top: 5px;
+  border: 2px solid #555;
 }
 
+.pieContainer {
+          height: 100px;
+	width: 100px;
+     }
+     .pieBackground {
+          background-color: white;
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          -moz-border-radius: 50px;
+          -webkit-border-radius: 50px;
+          -o-border-radius: 50px;
+          border-radius: 50px;
+          -moz-box-shadow: -1px 1px 3px #000;
+          -webkit-box-shadow: -1px 1px 3px #000;
+          -o-box-shadow: -1px 1px 3px #000;
+          box-shadow: -1px 1px 3px #000;
+     }
+     .pie {
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          -moz-border-radius: 50px;
+          -webkit-border-radius: 50px;
+          -o-border-radius: 50px;
+          border-radius: 50px;
+          clip: rect(0px, 50px, 100px, 0px);
+     }
+     .hold {
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          -moz-border-radius: 50px;
+          -webkit-border-radius: 50px;
+          -o-border-radius: 50px;
+          border-radius: 50px;
+          clip: rect(0px, 100px, 100px, 50px);
+     }
+     #pieSlice1 .pie {
+          background-color: #333;
+          -webkit-transform:rotate(120deg);
+          -moz-transform:rotate(120deg);
+          -o-transform:rotate(120deg);
+          transform:rotate(120deg);
+     }	
+.rectangle {
+	height: 160px;
+	width: 720px;
+	color: black;
+float: left;
+	text-align: center;
+	margin-top: 40px;
+  /* Firefox 3.6+ */
+   background-image: -moz-linear-gradient(left, white, #333);
+
+   /* Safari 4+, Chrome 1+ */
+   background-image: -webkit-gradient(linear, left center, right center, from(white), to(#333));
+
+   /* Safari 5.1+, Chrome 10+ */
+   background-image: -webkit-linear-gradient(left, white, #333); 
+}
+
+#education .rectangle p {
+	margin-top: 55px;
+}
+.leftArrow {
+color: #eee;
+float: left;
+			width:0px; 
+			height:0px; 
+			border-top:120px solid transparent;  /* left arrow slant */
+			border-bottom:120px solid transparent; /* right arrow slant */
+			border-left:120px solid #333; /* top, add background color here */
+		}
+#education .leftArrow p {
+width: 80px;
+margin-top: -60px;
+margin-left: -115px;
+text-align: center;
+}
+
+.rightArrow {
+color: #333;
+float: left;
+	width:0px; 
+	height:0px; 
+	border-top:120px solid transparent;  /* left arrow slant */
+	border-bottom:120px solid transparent; /* right arrow slant */
+	border-right:120px solid white; /* top, add background color here */
+		}
+#education .rightArrow p {
+	width: 80px;
+	text-align: center;
+	margin-left: 35px;
+	margin-top: -30px;
+}
+#education .goals p {
+	margin-bottom: -20px;	
+}
+.goals li {
+	margin-bottom: 10px;
+	line-height: 1.2em;
+}
+
+.leftGoal {
+width: 300px;
+float: left;
+margin-right: 20px;
+margin-left: 10px;
+}
+
+.centerGoal {
+width: 300px;
+float: left;
+margin-right: 20px;
+}
+
+.rightGoal {
+width: 300px;
+float: left;
+}
 .circle {
  height: 24px;
  -moz-border-radius:12px;
@@ -47,7 +171,9 @@ body #education {
  margin-right: 4px;
  margin-bottom: 4px;
 }
-
+#base .circle {
+background-color: white;
+}
 #dead .circle {
 	background-color: black;
 }
@@ -65,6 +191,7 @@ body #education {
 }
 
 .pictogram {
+float: right;
 	width: 610px;
 	margin-left: auto;
 	margin-right: auto;
@@ -75,8 +202,17 @@ body #education {
 	text-decoration: none;
 	clear: both;
 	margin-top: 0.3em;
+margin-bottom: 0.1em;
 }
 
+#base {
+width: 290px;
+float: left;
+border: 2px solid #333;
+padding-right: 1px;
+position: absolute;
+padding-left: 5px;
+}
 
 .pictogram > .block {
 	width: 300px;

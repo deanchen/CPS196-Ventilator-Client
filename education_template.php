@@ -2,10 +2,10 @@
   <div id="card-content">
     <tpl if="cardNum == 1">
       <h1>Welcome</h1>
-      <p>Your loved one has been on a mechanical ventilator for much longer than average.</p>
-      <p>Your loved one can't tell the doctor what goals of treatment fit best with their wishes.</p>
-      <p>Because your loved one can't tell us now what treatment goals fit their wishes, they need your help.</p>
-      <p>This decision aid tool will help you to decide about goals of treatment for a loved one in an intensive care unit (ICU).</p>
+      <h2>Your loved one has been on a mechanical ventilator for much longer than average.</h2>
+      <h2>Your loved one can't tell the doctor what goals of treatment fit best with their wishes.</h2>
+      <h2>Because your loved one can't tell us now what treatment goals fit their wishes, they need your help.</h2>
+      <h2>This decision aid tool will help you to decide about goals of treatment for a loved one in an intensive care unit (ICU).</h2>
       <!--
       <ul>
         <li><p>This will take about 30 minutes.</p></li>
@@ -37,12 +37,21 @@
     <tpl if="cardNum == 4">
       <h1>What is it Like to Receive Mechanical Ventilation?</h1>
       <h2>It is uncomfortable to be hooked up to a ventilator, so patients get medicines for pain and to help them relax while they are on it.</h2>
-      <h2>Because the tube in a patient's mouth, they can't eat or drink by mouth while they are receiving mechanical ventilation.</h2>
+     <h2>Because the tube in a patient's mouth, they can't eat or drink by mouth while they are receiving mechanical ventilation.</h2>
     </tpl>
     
     <tpl if="cardNum == 5">
       <h1>What Happens to People on Ventilators?</h1>
-      <img src='education/images/ventilator_pie.jpg' />
+      <!--<img src='education/images/ventilator_pie.jpg' />-->
+      <h2>Patients who receive mechanical ventilation are very sick. 30 out of every 100 people on ventilators die within 1 year.</h2>
+      <!-- CSS3 Pie Chart -->
+      <!-- Tut here http://kylejlarson.com/blog/2011/how-to-create-pie-charts-with-css3/ -->
+      <div style="float: left; margin-right: 20px" class="pieContainer">
+          <div class="pieBackground"></div>
+          <div id="pieSlice1" class="hold"><div class="pie"></div></div>
+      </div>
+      <p>Survival at 1 year <br />for Average Ventilated<br />Patient</p>
+<div style="clear: both"></div>
       <h2>Most ICU patients no longer need a ventilator within 3 or 4 days.</h2>
       <h2>Your loved one has been on a ventilator for much longer than average.</h2>
     </tpl>
@@ -60,19 +69,58 @@
     
     <tpl if="cardNum == 7">
       <h1>What are Different Treatment Goals?</h1>
-      <p>Your loved one has been on a ventilator in an ICU for much longer than most ICU patients.</p>
-      <p>It is important to think about what the best treatment goals for your loved one should be.</p>
-      <p>The doctors need your guidance to understand what types of treatments best fit your loved one's wishes.</p>
-      <p>There are three main goals of treatment at this point for your loved one. These are shown in the figure below:</p>
-      <img src='education/images/goals_of_treatment.jpg' />
+      <h2>Your loved one has been on a ventilator in an ICU for much longer than most ICU patients.</h2>
+      <h2>It is important to think about what the best treatment goals for your loved one should be.</h2>
+      <h2>The doctors need your guidance to understand what types of treatments best fit your loved one's wishes.</h2>
+      <h2>There are three main goals of treatment at this point for your loved one. These are shown in the figure on the next page.</h2>
     </tpl>
-    
-    <tpl if="cardNum == 8">
+   <tpl if="cardNum == 8">
+	<h1>Three Main Goals of Treatment</h1>
+<div class="rightArrow"><p>1. Comfort</p></div>
+<div class="rectangle"><p>2. Aim for Survival but<br />Avoid prolonged Treatment</p></div>
+<div class="leftArrow"><p>3. Survival at All Cost</p></div>
+<div style="clear: both"></div>
+<div class="leftGoal goals">
+<p>1.</p>
+<ul>
+<li>Provide medications to relieve pain and anxiety</li>
+<li>Death often occurs during hospitalization</li>
+<li><em>Avoid</em> procedures like:<br />
+-tracheostomy placement<br />
+-feeding tube placement<br />
+-more life support like dialysis</li>
+</ul>
+</div>
+<div class="centerGoal goals">
+<p>2.</p>
+<ul>
+<li>Try to remove breathing tube successfully</li>
+<li>Usually <em>avoids</em>:<br />
+-tracheostomy<br />
+-feeding tube<br />
+-more life support like dialysis
+<li>
+</ul>
+</div>
+
+<div class="rightGoal goals">
+<p>3.<p>
+<ul>
+<li>Try to remove breathing tube successfully</li>
+<li>May <em>require</em>:<br />
+-tracheostomy placement<br />
+-feeding tube placement
+</li>
+</div>
+      <!--<img src='education/images/goals_of_treatment.jpg' />-->
+	
+   </tpl> 
+    <tpl if="cardNum == 9">
       <h1>Advantages and Disadvantages of Different Treatment Goals</h1>
       <img src='education/images/pro_con_treatment.jpg' />
     </tpl>
     
-    <tpl if="cardNum == 9">
+    <tpl if="cardNum == 10">
       <h1>Why do I have to make a decision for my loved one?</h1>
       <h2>When people are too sick to make their own medical choices, someone close to them like you must do it - you are one most likely to know what they would want. Your job is not to make the decision that you want, but to make the decision your loved one would want if they could tell us.</h2>
       <h2>What your loved one would want may not be the same as what you would want for yourself.</h2>
@@ -80,18 +128,27 @@
       <h2>Making a choice like this for someone else can be very hard. The next section will help you as you go through the steps.</h2>
     </tpl>
     
-    <tpl if="cardNum == 10">
+    <tpl if="cardNum == 11">
 
 <h1>Where are 100 patients just like my loved one after 1 year?</h1>
       <h2 style="margin-bottom: 0px">This diagram shows what has happened after 1 year to 100 patients just like your loved one if the current treatment plan is continued. Each circle represents one person.</h2>
-
+<div style="height: 10px"></div>
+ <div id="base" >
+<h3 class="label"><strong>Out of 100 patients:</strong></h3>
+<div style="clear: both"></div>
+<?php for ($i = 0; $i<100; $i++): ?>
+  <div class='circle'></div>
+<?php endfor; ?>
+<div style='clear: both'></div>
+</div>
+      
      <div class="pictogram">
       <?php 
 	// make web service call to get the statistics and display it using css 3
 	$api_url ='http://' . $_SERVER['SERVER_NAME'] . '/api/rest/report/' . $_SESSION['session_id'];
       	$survival = json_decode(file_get_contents($api_url));
       ?>
-      	<div id="dead" class="block left">
+    	<div id="dead" class="block left">
       		<h3 class="label"><?php echo $survival->dead; ?> dead</h2>
       		<div style="clear: both"></div>
       		<?php for ($i = 0; $i<$survival->dead; $i++): ?>

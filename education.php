@@ -16,6 +16,7 @@ endif;
 <!DOCTYPE HTML>
 <html>
 	<head>
+<meta name="apple-mobile-web-app-capable" content="yes">
 		<title>Ventilator App</title>
 		
 		<!-- Sencha Touch CSS -->
